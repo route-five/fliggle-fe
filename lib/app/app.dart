@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fliggle/app/view/auth/register/step_4.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: RegisterStep4()
     );
   }
 }
