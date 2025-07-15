@@ -1,59 +1,54 @@
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  final String label;
+  final String labelText;
   final String hintText;
-  final TextEditingController? controller;
-  final bool obscureText;
-  final TextInputType keyboardType;
 
   const CustomTextField({
     super.key,
-    required this.label,
+    required this.labelText,
     required this.hintText,
-    this.controller,
-    this.obscureText = false,
-    this.keyboardType = TextInputType.text,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+    return SizedBox(
+      height: 76, // 전체 높이: 라벨 + 필드 포함
+      child: TextFormField(
+        style: const TextStyle(
+          fontSize: 14,
+          height: 1.2,
+          fontFamily: 'Pretendard',
         ),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          obscureText: obscureText,
-          keyboardType: keyboardType,
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey.shade400),
-            filled: true,
-            fillColor: Colors.white,
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 18,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.grey),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.grey),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.blue),
-            ),
+        decoration: InputDecoration(
+          labelText: labelText,
+          hintText: hintText,
+          floatingLabelBehavior: FloatingLabelBehavior.auto,
+          labelStyle: const TextStyle(
+            fontSize: 14,
+            fontFamily: 'Pretendard',
+            fontWeight: FontWeight.w500,
+            color: Colors.black,
+          ),
+          hintStyle: const TextStyle(
+            color: Colors.grey,
+            fontFamily: 'Pretendard',
+            fontSize: 14,
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 18,
+            horizontal: 16,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xFFB6B6B6), width: 1),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Color(0xFF6C98FF), width: 1.5),
+            borderRadius: BorderRadius.circular(12),
           ),
         ),
-      ],
+      ),
     );
   }
 }
