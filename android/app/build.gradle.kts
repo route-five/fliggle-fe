@@ -7,6 +7,7 @@ plugins {
 
 android {
     namespace = "com.example.fliggle"
+    compileSdkVersion 33
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -24,6 +25,7 @@ android {
         applicationId = "com.example.fliggle"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdkVersion 18
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
