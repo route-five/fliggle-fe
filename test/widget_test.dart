@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fliggle/main.dart';
+// import 'package:fliggle/main.dart';
 import 'package:fliggle/app/app.dart';
 
 void main() {
