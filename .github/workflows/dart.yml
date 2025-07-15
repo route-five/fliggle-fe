@@ -12,7 +12,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
+    name: Unit Test
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +23,12 @@ jobs:
       # You can specify other versions if desired, see documentation here:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
       # - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      # used flutter action
+      # ref: https://velog.io/@etialmoon/GitHub-Actions-Flutter-Test-%EC%9E%90%EB%8F%99%ED%99%94
+      - uses: subosito/flutter-action@v2.21.0
+        with:
+          channel: "stable"
+          flutter-version: "3.29.3"
 
       - name: Install dependencies
         run: flutter pub get
@@ -33,10 +39,10 @@ jobs:
 
       # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
-        run: flutter analyze
+        run: dart analyze
 
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
-      - name: Run tests
+      - name: Run unit test
         run: flutter test
