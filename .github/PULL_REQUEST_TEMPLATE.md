@@ -15,7 +15,7 @@
   - 본 프로젝트는 `MVVM` 구조를 따릅니다.
   - `lib/main.dart` 파일은 수정하지 말아 주세요.
   - 테스트 파일은 프로덕션 파일에 포함해서는 안됩니다.
-  - 모든 파일 및 폴더는 `snake-case` 명명법을 따릅니다.
+  - 모든 파일 및 폴더는 `kebab-case` 명명법을 따릅니다.
       - 옳은 예) `auth/register/step-4.dart` , `main.dart`
       - 나쁜 예) `Views/component.dart` , `step_4.dart`
   - 기능에 알맞는 폴더(view, service, model 등)에 파일을 추가해 주세요.
