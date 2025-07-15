@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fliggle/components/custom_text_field.dart';
 
 void main() {
   runApp(const FliggleApp());
@@ -104,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            CustomTextField(label: '이메일', hintText: '이메일을 입력하세요'),
             const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
