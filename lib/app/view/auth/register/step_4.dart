@@ -27,15 +27,15 @@ class RegisterStep4 extends StatelessWidget {
               const SizedBox(height: 28),
 
               // ID
-              const CustomTextField(label: '아이디', hint: 'pretty_gist'),
+              CustomTextField(label: '아이디', hint: 'pretty_gist'),
               const SizedBox(height: 16),
 
               // Nickname
-              const CustomTextField(label: '닉네임', hint: 'GIST'),
+              CustomTextField(label: '닉네임', hint: 'GIST'),
               const SizedBox(height: 16),
 
               // Phone number
-              const CustomTextField(label: '휴대폰 번호', hint: '01011112222'),
+              CustomTextField(label: '휴대폰 번호', hint: '01011112222'),
 
               const Spacer(),
 
