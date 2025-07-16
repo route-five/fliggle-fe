@@ -8,6 +8,13 @@ class FliggleTextStyles {
         fontWeight: FontWeight.w700,
         color: FliggleColors.of(context).text,
       );
+
+  // Subtitle
+  static TextStyle stepSubtitle(BuildContext context) => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: FliggleColors.of(context).disabled,
+      );
   
   // (Custom)TextField
   static TextStyle textFieldLabel(BuildContext context) => TextStyle(
