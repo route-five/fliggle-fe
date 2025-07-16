@@ -16,7 +16,7 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   Color get outline;
 
   @override
-  FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled }) {
+  FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled, Color? outline }) {
     // Delegated to concrete classes
     return this;
   }
