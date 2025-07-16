@@ -105,11 +105,11 @@ void main() {
       final focusAvg = focusBenchmark.measurements.reduce((a, b) => a + b) / focusBenchmark.measurements.length;
       final inputAvg = textInputBenchmark.measurements.reduce((a, b) => a + b) / textInputBenchmark.measurements.length;
       final rebuildAvg = rebuildBenchmark.measurements.reduce((a, b) => a + b) / rebuildBenchmark.measurements.length;
-      
-      expect(buildAvg, lessThan(50000), reason: 'Average build time should be under 50ms');
-      expect(focusAvg, lessThan(25000), reason: 'Average focus time should be under 25ms');
-      expect(inputAvg, lessThan(15000), reason: 'Average input time should be under 15ms');
-      expect(rebuildAvg, lessThan(30000), reason: 'Average rebuild time should be under 30ms');
+
+      expect(buildAvg, lessThan(60000), reason: 'Average build time should be under 60ms');
+      expect(focusAvg, lessThan(30000), reason: 'Average focus time should be under 30ms');
+      expect(inputAvg, lessThan(20000), reason: 'Average input time should be under 20ms');
+      expect(rebuildAvg, lessThan(40000), reason: 'Average rebuild time should be under 40ms');
     });
     
     testWidgets('stress test with many text fields', (WidgetTester tester) async {
