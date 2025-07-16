@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fliggle/app/view/auth/register/step_4.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -36,7 +37,7 @@ class App extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: RegisterStep4(),
     );
   }
 }
