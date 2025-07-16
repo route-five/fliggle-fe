@@ -13,7 +13,7 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  FocusNode focusNode = FocusNode();
+  final FocusNode focusNode = FocusNode();
   bool isFocused = false;
 
   @override
