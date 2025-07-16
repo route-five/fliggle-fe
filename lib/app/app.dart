@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fliggle/app/view/auth/register/step_4.dart';
+// import 'package:fliggle/app/view/auth/register/step_4.dart';
 import 'package:fliggle/app/view/core/design/fliggle_theme_data.dart';
 
 class App extends StatelessWidget {
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       theme: FliggleThemeData.lightTheme,
       darkTheme: FliggleThemeData.darkTheme,
       themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
-      home: RegisterStep4(),
+      home: MyHomePage(title: 'Fliggle'),
     );
   }
 }
