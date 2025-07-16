@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fliggle/view/core/components/custom_text_field.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -70,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CustomTextField(hint: "힌트 텍스트", label: "이메일"),
             const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
