@@ -3,20 +3,12 @@ import 'package:flutter/material.dart';
 abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   const FliggleColors();
 
-  /// Access via Theme.of(context).extension<FliggleColors>()!
   static FliggleColors of(BuildContext context) =>
       Theme.of(context).extension<FliggleColors>()!;
 
-  /// Primary brand color
   Color get primary;
-
-  /// Secondary brand color
   Color get secondary;
-
-  /// Background color
   Color get background;
-
-  /// Text color
   Color get text;
   
   Color get warning;

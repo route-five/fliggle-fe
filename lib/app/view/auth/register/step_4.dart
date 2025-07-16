@@ -8,8 +8,6 @@ class RegisterStep4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-
     return Scaffold(
       backgroundColor: FliggleColors.of(context).background,
       body: SafeArea(
