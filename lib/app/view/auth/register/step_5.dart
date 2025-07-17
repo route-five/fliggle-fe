@@ -14,10 +14,9 @@ class RegisterStep5 extends StatelessWidget {
       backgroundColor: colors.background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28),
+          padding: const EdgeInsets.all(28),
           child: Column(
             children: [
-              const SizedBox(height: 28),
 
               Align(
                 alignment: Alignment.centerLeft,
@@ -52,8 +51,9 @@ class RegisterStep5 extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
+                  // TODO
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    // Navigator.pushNamed(context, '/login');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colors.primary,
@@ -68,8 +68,6 @@ class RegisterStep5 extends StatelessWidget {
                   ),
                 ),
               ),
-
-              const SizedBox(height: 28),
             ],
           ),
         ),
