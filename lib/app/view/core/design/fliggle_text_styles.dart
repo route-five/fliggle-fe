@@ -41,4 +41,11 @@ class FliggleTextStyles {
         fontWeight: FontWeight.w700,
         color: Colors.white,
       );
+
+  static TextStyle titleLarge(BuildContext context) => TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: FliggleColors.of(context).text,
+      );
 }
+
