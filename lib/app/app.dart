@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:fliggle/app/view/auth/register/step_4.dart';
 import 'package:fliggle/app/view/core/design/fliggle_theme_data.dart';
+import 'package:fliggle/app/view/core/design/fliggle_colors.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -8,55 +9,31 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Fliggle',
       theme: FliggleThemeData.lightTheme,
       darkTheme: FliggleThemeData.darkTheme,
-      themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
-      home: FliggleBumperPage(title: 'Fliggle'),
+      themeMode: ThemeMode.system,
+      home: FliggleBumperPage(),
     );
   }
 }
 
-class FliggleBumperPage extends StatefulWidget {
-  const FliggleBumperPage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<FliggleBumperPage> createState() => _FliggleBumperPageState();
-}
-
-class _FliggleBumperPageState extends State<FliggleBumperPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class FliggleBumperPage extends StatelessWidget {
+  const FliggleBumperPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+      backgroundColor: FliggleColors.of(context).primary,
+      body: const Center(
+        child: Text(
+          'Fliggle',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
