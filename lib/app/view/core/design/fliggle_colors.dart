@@ -11,6 +11,7 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   Color get secondary;
   Color get background;
   Color get text;
+  Color get border;
 
   Color get warning;
   Color get disabled;
@@ -22,6 +23,7 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
     Color? secondary,
     Color? background,
     Color? text,
+    Color? border,
     Color? warning,
     Color? disabled,
     Color? outline,
@@ -43,9 +45,6 @@ mixin FliggleConstantColors {
   Color get warning => const Color(0xFFF88787);
 
   @protected
-  Color get disabled => const Color(0xFF808080);
-
-  @protected
   Color get outline => const Color(0xFFB6B6B6);
 }
 
@@ -65,11 +64,18 @@ class FliggleLightColors extends FliggleColors with FliggleConstantColors {
   Color get text => const Color(0xFF000000);
 
   @override
+  Color get border => const Color(0xFFE1E1E1);
+
+  @override
+  Color get disabled => const Color(0xFF808080);
+
+  @override
   FliggleColors copyWith({
     Color? primary,
     Color? secondary,
     Color? background,
     Color? text,
+    Color? border,
     Color? warning,
     Color? disabled,
     Color? outline,
@@ -100,11 +106,18 @@ class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
   Color get text => const Color(0xFFFFFFFF);
 
   @override
+  Color get border => const Color(0xFF2E333F);
+
+  @override
+  Color get disabled => const Color(0xFF404654);
+
+  @override
   FliggleColors copyWith({
     Color? primary,
     Color? secondary,
     Color? background,
     Color? text,
+    Color? border,
     Color? warning,
     Color? disabled,
     Color? outline,
