@@ -55,6 +55,19 @@ class FliggleLightColors extends FliggleColors with FliggleConstantColors {
   @override
   Color get text => const Color(0xFF000000);
 
+  // Gray palette for light theme
+  Color get gray50 => const Color(0xFFF6F6F6);
+  Color get gray100 => const Color(0xFFE7E7E7);
+  Color get gray200 => const Color(0xFFD1D1D1);
+  Color get gray300 => const Color(0xFFB0B0B0);
+  Color get gray400 => const Color(0xFF888888);
+  Color get gray500 => const Color(0xFF6D6D6D);
+  Color get gray600 => const Color(0xFF5D5D5D);
+  Color get gray700 => const Color(0xFF4F4F4F);
+  Color get gray800 => const Color(0xFF454545);
+  Color get gray900 => const Color(0xFF3D3D3D);
+  Color get gray950 => const Color(0xFF0E0E0E);
+
   @override
   FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled, Color? outline }) {
     return this;
@@ -81,6 +94,19 @@ class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
 
   @override
   Color get text => const Color(0xFFFFFFFF);
+
+  // Gray palette for dark theme (reverse mapping)
+  Color get gray50 => const Color(0xFF0E0E0E);
+  Color get gray100 => const Color(0xFF3D3D3D);
+  Color get gray200 => const Color(0xFF454545);
+  Color get gray300 => const Color(0xFF4F4F4F);
+  Color get gray400 => const Color(0xFF5D5D5D);
+  Color get gray500 => const Color(0xFF6D6D6D);
+  Color get gray600 => const Color(0xFF888888);
+  Color get gray700 => const Color(0xFFB0B0B0);
+  Color get gray800 => const Color(0xFFD1D1D1);
+  Color get gray900 => const Color(0xFFE7E7E7);
+  Color get gray950 => const Color(0xFFF6F6F6);
 
   @override
   FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled, Color? outline }) {
