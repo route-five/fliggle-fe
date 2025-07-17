@@ -64,9 +64,6 @@ class _AppState extends State<App> {
             ),
           ),
           child: NavigationBar(
-            indicatorShape: RoundedSuperellipseBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
             indicatorColor: Colors.transparent,
             backgroundColor: FliggleColors.of(context).background,
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
