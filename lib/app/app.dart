@@ -44,7 +44,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Fliggle',
       theme: FliggleThemeData.lightTheme,
       darkTheme: FliggleThemeData.darkTheme,
       themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
@@ -54,66 +54,76 @@ class _AppState extends State<App> {
           onPageChanged: _onPageChanged,
           children: _screens,
         ),
-        bottomNavigationBar: NavigationBar(
-          indicatorShape: RoundedSuperellipseBorder(
-            borderRadius: BorderRadius.circular(12),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: FliggleColors.of(context).border,
+                width: 1,
+              ),
+            ),
           ),
-          indicatorColor: Colors.transparent,
-          backgroundColor: FliggleColors.of(context).background,
-          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-          selectedIndex: _currentIndex,
-          onDestinationSelected: _onNavTap,
-          destinations: [
-            NavigationDestination(
-              icon:
-                  _currentIndex == 0
-                      ? FliggleIcons.homeSelected(
-                        color: FliggleColors.of(context).text,
-                      )
-                      : FliggleIcons.home(
-                        color: FliggleColors.of(context).text,
-                      ),
-              tooltip: 'Home',
-              label: 'Home',
+          child: NavigationBar(
+            indicatorShape: RoundedSuperellipseBorder(
+              borderRadius: BorderRadius.circular(12),
             ),
-            NavigationDestination(
-              icon:
-                  _currentIndex == 1
-                      ? FliggleIcons.searchSelected(
-                        color: FliggleColors.of(context).text,
-                      )
-                      : FliggleIcons.search(
-                        color: FliggleColors.of(context).text,
-                      ),
-              tooltip: 'Search',
-              label: 'Search',
-            ),
-            NavigationDestination(
-              icon:
-                  _currentIndex == 2
-                      ? FliggleIcons.chatSelected(
-                        color: FliggleColors.of(context).text,
-                      )
-                      : FliggleIcons.chat(
-                        color: FliggleColors.of(context).text,
-                      ),
-              tooltip: 'Chat',
-              label: 'Chat',
-            ),
-            NavigationDestination(
-              icon:
-                  _currentIndex == 3
-                      ? FliggleIcons.profileSelected(
-                        color: FliggleColors.of(context).text,
-                      )
-                      : FliggleIcons.profile(
-                        color: FliggleColors.of(context).text,
-                      ),
+            indicatorColor: Colors.transparent,
+            backgroundColor: FliggleColors.of(context).background,
+            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+            selectedIndex: _currentIndex,
+            onDestinationSelected: _onNavTap,
+            destinations: [
+              NavigationDestination(
+                icon:
+                    _currentIndex == 0
+                        ? FliggleIcons.homeSelected(
+                          color: FliggleColors.of(context).text,
+                        )
+                        : FliggleIcons.home(
+                          color: FliggleColors.of(context).text,
+                        ),
+                tooltip: 'Home',
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon:
+                    _currentIndex == 1
+                        ? FliggleIcons.searchSelected(
+                          color: FliggleColors.of(context).text,
+                        )
+                        : FliggleIcons.search(
+                          color: FliggleColors.of(context).text,
+                        ),
+                tooltip: 'Search',
+                label: 'Search',
+              ),
+              NavigationDestination(
+                icon:
+                    _currentIndex == 2
+                        ? FliggleIcons.chatSelected(
+                          color: FliggleColors.of(context).text,
+                        )
+                        : FliggleIcons.chat(
+                          color: FliggleColors.of(context).text,
+                        ),
+                tooltip: 'Chat',
+                label: 'Chat',
+              ),
+              NavigationDestination(
+                icon:
+                    _currentIndex == 3
+                        ? FliggleIcons.profileSelected(
+                          color: FliggleColors.of(context).text,
+                        )
+                        : FliggleIcons.profile(
+                          color: FliggleColors.of(context).text,
+                        ),
 
-              tooltip: 'Profile',
-              label: 'Profile',
-            ),
-          ],
+                tooltip: 'Profile',
+                label: 'Profile',
+              ),
+            ],
+          ),
         ),
       ),
     );
