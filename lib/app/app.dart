@@ -12,20 +12,20 @@ class App extends StatelessWidget {
       theme: FliggleThemeData.lightTheme,
       darkTheme: FliggleThemeData.darkTheme,
       themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
-      home: MyHomePage(title: 'Fliggle'),
+      home: FliggleBumperPage(title: 'Fliggle'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class FliggleBumperPage extends StatefulWidget {
+  const FliggleBumperPage({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<FliggleBumperPage> createState() => _FliggleBumperPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FliggleBumperPageState extends State<FliggleBumperPage> {
   int _counter = 0;
 
   void _incrementCounter() {
