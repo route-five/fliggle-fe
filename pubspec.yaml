@@ -79,6 +79,9 @@ flutter:
         weight: 800
       - asset: assets/fonts/Pretendard-1.3.9/public/static/Pretendard-Black.otf
         weight: 900
+    
+  assets:
+    - assets/images/logo.svg
 
   # To add assets to your application, add an assets section, like this:
   assets:
