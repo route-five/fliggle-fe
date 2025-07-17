@@ -80,11 +80,10 @@ flutter:
       - asset: assets/fonts/Pretendard-1.3.9/public/static/Pretendard-Black.otf
         weight: 900
     
-  assets:
-    - assets/images/logo.svg
-
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/logo.svg
+    - assets/images/text_logo.svg
     - assets/icons/chat.svg
     - assets/icons/home.svg
     - assets/icons/profile.svg
@@ -93,6 +92,10 @@ flutter:
     - assets/icons/home_selected.svg
     - assets/icons/profile_selected.svg
     - assets/icons/search_selected.svg
+    - assets/icons/plus.svg
+    - assets/icons/heart.svg
+    - assets/icons/heart_full.svg
+    - assets/icons/comment.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
