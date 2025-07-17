@@ -1,9 +1,11 @@
 import 'package:fliggle/app/view/chat_screen.dart';
+import 'package:fliggle/app/view/core/design/fliggle_colors.dart';
+import 'package:fliggle/app/view/core/design/fliggle_icons.dart';
+import 'package:fliggle/app/view/core/design/fliggle_theme_data.dart';
 import 'package:fliggle/app/view/home_screen.dart';
 import 'package:fliggle/app/view/profile_screen.dart';
 import 'package:fliggle/app/view/search_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fliggle/app/view/core/design/fliggle_theme_data.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -31,7 +33,6 @@ class _AppState extends State<App> {
 
   void _onNavTap(int index) {
     setState(() {
-      _currentIndex = index;
       _pageController.animateToPage(
         index,
         duration: const Duration(milliseconds: 300),
@@ -54,23 +55,62 @@ class _AppState extends State<App> {
           children: _screens,
         ),
         bottomNavigationBar: NavigationBar(
+          indicatorShape: RoundedSuperellipseBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          indicatorColor: Colors.transparent,
+          backgroundColor: FliggleColors.of(context).background,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
           selectedIndex: _currentIndex,
           onDestinationSelected: _onNavTap,
           destinations: [
             NavigationDestination(
-              icon: Icon(Icons.home_rounded),
+              icon:
+                  _currentIndex == 0
+                      ? FliggleIcons.homeSelected(
+                        color: FliggleColors.of(context).text,
+                      )
+                      : FliggleIcons.home(
+                        color: FliggleColors.of(context).text,
+                      ),
+              tooltip: 'Home',
               label: 'Home',
             ),
             NavigationDestination(
-              icon: Icon(Icons.search_rounded),
+              icon:
+                  _currentIndex == 1
+                      ? FliggleIcons.searchSelected(
+                        color: FliggleColors.of(context).text,
+                      )
+                      : FliggleIcons.search(
+                        color: FliggleColors.of(context).text,
+                      ),
+              tooltip: 'Search',
               label: 'Search',
             ),
             NavigationDestination(
-              icon: Icon(Icons.chat_rounded),
+              icon:
+                  _currentIndex == 2
+                      ? FliggleIcons.chatSelected(
+                        color: FliggleColors.of(context).text,
+                      )
+                      : FliggleIcons.chat(
+                        color: FliggleColors.of(context).text,
+                      ),
+              tooltip: 'Chat',
               label: 'Chat',
             ),
             NavigationDestination(
-              icon: Icon(Icons.person_rounded),
+              icon:
+                  _currentIndex == 3
+                      ? FliggleIcons.profileSelected(
+                        color: FliggleColors.of(context).text,
+                      )
+                      : FliggleIcons.profile(
+                        color: FliggleColors.of(context).text,
+                      ),
+
+              tooltip: 'Profile',
               label: 'Profile',
             ),
           ],
