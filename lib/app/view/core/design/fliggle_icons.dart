@@ -2,95 +2,60 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 
 class FliggleIcons {
-  static SvgPicture _get(
+  static SvgPicture get(
     String assetName, {
-    double width = 28,
-    double height = 28,
+    double size = 32,
+    double? width,
+    double? height,
     Color color = Colors.black,
   }) => SvgPicture.asset(
     assetName,
-    width: width,
-    height: height,
+    width: width ?? size,
+    height: height ?? size,
     colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
   );
 
-  static SvgPicture chat({
-    double width = 28,
-    double height = 28,
-    Color color = Colors.black,
-  }) =>
-      _get('assets/icons/chat.svg', width: width, height: height, color: color);
+  static SvgPicture chat({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/chat.svg', size: size, color: color);
 
   static SvgPicture chatSelected({
-    double width = 28,
-    double height = 28,
+    double size = 32,
     Color color = Colors.black,
-  }) => _get(
-    'assets/icons/chat_selected.svg',
-    width: width,
-    height: height,
-    color: color,
-  );
+  }) => get('assets/icons/chat_selected.svg', size: size, color: color);
 
-  static SvgPicture home({
-    double width = 28,
-    double height = 28,
-    Color color = Colors.black,
-  }) =>
-      _get('assets/icons/home.svg', width: width, height: height, color: color);
+  static SvgPicture home({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/home.svg', size: size, color: color);
 
   static SvgPicture homeSelected({
-    double width = 28,
-    double height = 28,
+    double size = 32,
     Color color = Colors.black,
-  }) => _get(
-    'assets/icons/home_selected.svg',
-    width: width,
-    height: height,
-    color: color,
-  );
+  }) => get('assets/icons/home_selected.svg', size: size, color: color);
 
-  static SvgPicture search({
-    double width = 28,
-    double height = 28,
-    Color color = Colors.black,
-  }) => _get(
-    'assets/icons/search.svg',
-    width: width,
-    height: height,
-    color: color,
-  );
+  static SvgPicture search({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/search.svg', size: size, color: color);
 
   static SvgPicture searchSelected({
-    double width = 28,
-    double height = 28,
+    double size = 32,
     Color color = Colors.black,
-  }) => _get(
-    'assets/icons/search_selected.svg',
-    width: width,
-    height: height,
-    color: color,
-  );
+  }) => get('assets/icons/search_selected.svg', size: size, color: color);
 
-  static SvgPicture profile({
-    double width = 28,
-    double height = 28,
-    Color color = Colors.black,
-  }) => _get(
-    'assets/icons/profile.svg',
-    width: width,
-    height: height,
-    color: color,
-  );
+  static SvgPicture profile({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/profile.svg', size: size, color: color);
 
   static SvgPicture profileSelected({
-    double width = 28,
-    double height = 28,
+    double size = 32,
     Color color = Colors.black,
-  }) => _get(
-    'assets/icons/profile_selected.svg',
-    width: width,
-    height: height,
-    color: color,
-  );
+  }) => get('assets/icons/profile_selected.svg', size: size, color: color);
+
+  static SvgPicture plus({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/plus.svg', size: size, color: color);
+
+  static SvgPicture heart({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/heart.svg', size: size, color: color);
+
+  static SvgPicture heartFull({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/heart_full.svg', size: size, color: color);
+
+  static SvgPicture comment({double size = 32, Color color = Colors.black}) =>
+      get('assets/icons/comment.svg', size: size, color: color);
 }
