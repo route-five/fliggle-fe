@@ -4,7 +4,8 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   const FliggleColors();
 
   static FliggleColors of(BuildContext context) =>
-      Theme.of(context).extension<FliggleColors>()!;
+      Theme.of(context).extension<FliggleColors>() ??
+      const FliggleLightColors();
 
   Color get primary;
   Color get secondary;
