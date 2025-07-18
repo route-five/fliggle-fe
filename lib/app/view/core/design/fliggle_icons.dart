@@ -7,12 +7,13 @@ class FliggleIcons {
     double size = 32,
     double? width,
     double? height,
-    Color color = Colors.black,
+    Color? color = Colors.black,
   }) => SvgPicture.asset(
     assetName,
     width: width ?? size,
     height: height ?? size,
-    colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+    colorFilter:
+        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
   );
 
   static SvgPicture chat({double size = 32, Color color = Colors.black}) =>
