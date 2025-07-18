@@ -12,10 +12,10 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   Color get background;
   Color get text;
   Color get border;
+  Color get disabled;
 
   Color get danger;
   Color get warning;
-  Color get disabled;
   Color get outline;
 
   @override
@@ -25,10 +25,7 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
     Color? background,
     Color? text,
     Color? border,
-    Color? danger,
-    Color? warning,
     Color? disabled,
-    Color? outline,
   }) {
     throw UnimplementedError(
       'copyWith is not implemented for $runtimeType. '
@@ -90,10 +87,7 @@ class FliggleLightColors extends FliggleColors with FliggleConstantColors {
     Color? background,
     Color? text,
     Color? border,
-    Color? danger,
-    Color? warning,
     Color? disabled,
-    Color? outline,
   }) {
     return FliggleLightColors(
       primary: primary ?? this.primary,
@@ -147,10 +141,7 @@ class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
     Color? background,
     Color? text,
     Color? border,
-    Color? danger,
-    Color? warning,
     Color? disabled,
-    Color? outline,
   }) {
     return FliggleDarkColors(
       primary: primary ?? this.primary,
