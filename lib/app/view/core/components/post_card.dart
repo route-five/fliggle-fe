@@ -1,6 +1,7 @@
 import 'package:fliggle/app/view/core/design/fliggle_colors.dart';
 import 'package:fliggle/app/view/core/design/fliggle_icons.dart';
 import 'package:fliggle/app/view/core/design/fliggle_text_styles.dart';
+import 'package:fliggle/app/view/core/util/time_format.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
@@ -9,6 +10,7 @@ class PostCard extends StatelessWidget {
     required this.authorName,
     required this.content,
     required this.isLiked,
+    required this.dateTime,
     this.likesCount = 0,
     this.commentsCount = 0,
   });
@@ -16,6 +18,7 @@ class PostCard extends StatelessWidget {
   final String authorName;
   final String content;
   final bool isLiked;
+  final DateTime dateTime;
   final int likesCount;
   final int commentsCount;
 
@@ -62,7 +65,7 @@ class PostCard extends StatelessWidget {
                         ),
                         SizedBox(width: 6),
                         Text(
-                          "10시간", // TODO: 시간 표시 형식 개선
+                          timeFormat(dateTime),
                           style: TextStyle(
                             color: FliggleColors.of(context).outline,
                             fontSize: 16,

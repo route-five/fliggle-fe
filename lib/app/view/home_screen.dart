@@ -65,9 +65,19 @@ class HomeScreen extends StatelessWidget {
                         "Netflix",
                         "Facebook",
                         "Instagram",
-                      ][Random(index).nextInt(5)],
+                      ][index % 5],
                   content:
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu risus dolor. Suspendisse potenti. Duis sed ante vel augue accumsan hendrerit a ac odio. Quisque eu ante ut urna vulputate dapibus eget eu erat. Donec eu rutrum tellus, sit amet pulvinar libero. Sed et mi vestibulum, convallis nibh nec, convallis ipsum.",
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu risus dolor. Suspendisse potenti. Duis sed ante vel augue accumsan hendrerit a ac odio. Quisque eu ante ut urna vulputate dapibus eget eu erat.",
+                  dateTime:
+                      [
+                        DateTime.now().subtract(Duration(seconds: 5)),
+                        DateTime.now().subtract(Duration(minutes: 3)),
+                        DateTime.now().subtract(Duration(hours: 1)),
+                        DateTime.now().subtract(Duration(days: 2)),
+                        DateTime.now().subtract(Duration(days: 23)),
+                        DateTime(DateTime.now().year, 6, 17),
+                        DateTime(2009, 8, 7),
+                      ][index % 6],
                   isLiked: Random(index).nextBool(),
                   likesCount: Random(index).nextInt(50),
                   commentsCount: Random(index).nextInt(20),
