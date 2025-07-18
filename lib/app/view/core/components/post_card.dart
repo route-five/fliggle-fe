@@ -9,18 +9,24 @@ class PostCard extends StatelessWidget {
     super.key,
     required this.authorName,
     required this.content,
-    required this.isLiked,
     required this.dateTime,
+    this.isLiked = false,
+    this.isCommented = false,
     this.likesCount = 0,
     this.commentsCount = 0,
+    this.onLikeTap,
+    this.onCommentTap,
   });
 
   final String authorName;
   final String content;
-  final bool isLiked;
   final DateTime dateTime;
+  final bool isLiked;
+  final bool isCommented;
   final int likesCount;
   final int commentsCount;
+  final void Function(bool beforeIsLiked)? onLikeTap;
+  final void Function()? onCommentTap;
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +92,20 @@ class PostCard extends StatelessWidget {
                     SizedBox(height: 16),
                     Row(
                       children: [
-                        isLiked
-                            ? FliggleIcons.heartFull(
-                              color: FliggleColors.of(context).warning,
-                              size: 24,
-                            )
-                            : FliggleIcons.heart(size: 24),
+                        GestureDetector(
+                          onTap: () {
+                            if (onLikeTap != null) {
+                              onLikeTap!(isLiked);
+                            }
+                          },
+                          child:
+                              isLiked
+                                  ? FliggleIcons.heartFull(
+                                    color: FliggleColors.of(context).danger,
+                                    size: 24,
+                                  )
+                                  : FliggleIcons.heart(size: 24),
+                        ),
                         SizedBox(width: 4),
                         Text(
                           likesCount.toString(),
@@ -101,9 +115,15 @@ class PostCard extends StatelessWidget {
                           ),
                         ),
                         SizedBox(width: 16),
-                        FliggleIcons.comment(
-                          color: FliggleColors.of(context).text,
-                          size: 24,
+                        GestureDetector(
+                          onTap: onCommentTap,
+                          child:
+                              isCommented
+                                  ? FliggleIcons.commentFull(
+                                    color: FliggleColors.of(context).warning,
+                                    size: 24,
+                                  )
+                                  : FliggleIcons.comment(size: 24),
                         ),
                         SizedBox(width: 4),
                         Text(
