@@ -109,30 +109,42 @@ class _AppState extends State<App> {
           onPageChanged: _onPageChanged,
           children: NavigationTab.values.map((tab) => tab.screen).toList(),
         ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(
-                color: FliggleColors.of(context).border,
-                width: 1,
+        bottomNavigationBar: Builder(
+          builder: (context) {
+            return Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: FliggleColors.of(context).border,
+                    width: 1,
+                  ),
+                ),
               ),
-            ),
-          ),
-          child: NavigationBar(
-            indicatorColor: Colors.transparent,
-            backgroundColor: FliggleColors.of(context).background,
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            selectedIndex: _currentTab.index,
-            onDestinationSelected: _onNavTap,
-            destinations:
-                NavigationTab.values.map((tab) {
-                  return NavigationDestination(
-                    icon: tab.getIcon(context, isSelected: tab == _currentTab),
-                    tooltip: tab.label,
-                    label: tab.label,
+              child: Builder(
+                builder: (context) {
+                  return NavigationBar(
+                    indicatorColor: Colors.transparent,
+                    backgroundColor: FliggleColors.of(context).background,
+                    labelBehavior:
+                        NavigationDestinationLabelBehavior.alwaysHide,
+                    selectedIndex: _currentTab.index,
+                    onDestinationSelected: _onNavTap,
+                    destinations:
+                        NavigationTab.values.map((tab) {
+                          return NavigationDestination(
+                            icon: tab.getIcon(
+                              context,
+                              isSelected: tab == _currentTab,
+                            ),
+                            tooltip: tab.label,
+                            label: tab.label,
+                          );
+                        }).toList(),
                   );
-                }).toList(),
-          ),
+                },
+              ),
+            );
+          },
         ),
       ),
     );

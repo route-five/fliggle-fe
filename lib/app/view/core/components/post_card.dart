@@ -149,7 +149,10 @@ class _PostCardState extends State<PostCard> {
                                     color: FliggleColors.of(context).danger,
                                     size: 24,
                                   )
-                                  : FliggleIcons.heart(size: 24),
+                                  : FliggleIcons.heart(
+                                    color: FliggleColors.of(context).text,
+                                    size: 24,
+                                  ),
                         ),
                         SizedBox(width: 4),
                         Text(
@@ -179,7 +182,10 @@ class _PostCardState extends State<PostCard> {
                                     color: FliggleColors.of(context).warning,
                                     size: 24,
                                   )
-                                  : FliggleIcons.comment(size: 24),
+                                  : FliggleIcons.comment(
+                                    color: FliggleColors.of(context).text,
+                                    size: 24,
+                                  ),
                         ),
                         SizedBox(width: 4),
                         Text(
