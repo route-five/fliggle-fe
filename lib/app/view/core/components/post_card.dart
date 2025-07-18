@@ -38,20 +38,34 @@ class _PostCardState extends State<PostCard> {
     super.initState();
     isLiked = widget.isLiked;
     isCommented = widget.isCommented;
+    likesCount = widget.likesCount;
+    commentsCount = widget.commentsCount;
   }
 
   late bool isLiked;
   late bool isCommented;
+  late int likesCount;
+  late int commentsCount;
 
   void toggleLike() {
     setState(() {
       isLiked = !isLiked;
+      if (isLiked) {
+        likesCount++;
+      } else {
+        likesCount--;
+      }
     });
   }
 
   void toggleComment() {
     setState(() {
       isCommented = !isCommented;
+      if (isCommented) {
+        commentsCount++;
+      } else {
+        commentsCount--;
+      }
     });
   }
 
@@ -100,7 +114,7 @@ class _PostCardState extends State<PostCard> {
                         ),
                         SizedBox(width: 6),
                         Text(
-                          timeFormat(widget.dateTime),
+                          widget.dateTime.toRelativeTimeString(),
                           style: TextStyle(
                             color: FliggleColors.of(context).outline,
                             fontSize: 16,
@@ -139,7 +153,7 @@ class _PostCardState extends State<PostCard> {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          widget.likesCount.toString(),
+                          likesCount.toString(),
                           style: TextStyle(
                             color:
                                 isLiked
@@ -169,7 +183,7 @@ class _PostCardState extends State<PostCard> {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          widget.commentsCount.toString(),
+                          commentsCount.toString(),
                           style: TextStyle(
                             color:
                                 isCommented
