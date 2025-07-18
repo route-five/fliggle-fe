@@ -28,8 +28,10 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
     Color? disabled,
     Color? outline,
   }) {
-    // Delegated to concrete classes
-    return this;
+    throw UnimplementedError(
+      'copyWith is not implemented for $runtimeType. '
+      'Please implement this method in subclasses.',
+    );
   }
 
   @override
