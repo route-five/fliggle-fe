@@ -141,7 +141,12 @@ class _PostCardState extends State<PostCard> {
                         Text(
                           widget.likesCount.toString(),
                           style: TextStyle(
-                            color: FliggleColors.of(context).text,
+                            color:
+                                isLiked
+                                    ? FliggleColors.of(context).danger
+                                    : FliggleColors.of(context).text,
+                            fontWeight:
+                                isLiked ? FontWeight.bold : FontWeight.normal,
                             fontSize: 16,
                           ),
                         ),
@@ -166,7 +171,14 @@ class _PostCardState extends State<PostCard> {
                         Text(
                           widget.commentsCount.toString(),
                           style: TextStyle(
-                            color: FliggleColors.of(context).text,
+                            color:
+                                isCommented
+                                    ? FliggleColors.of(context).warning
+                                    : FliggleColors.of(context).text,
+                            fontWeight:
+                                isCommented
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
                             fontSize: 16,
                           ),
                         ),
