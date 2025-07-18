@@ -4,21 +4,33 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   const FliggleColors();
 
   static FliggleColors of(BuildContext context) =>
-      Theme.of(context).extension<FliggleColors>()!;
+      Theme.of(context).extension<FliggleColors>() ??
+      const FliggleLightColors();
 
   Color get primary;
   Color get secondary;
   Color get background;
   Color get text;
-  
-  Color get warning;
+  Color get border;
   Color get disabled;
+
+  Color get danger;
+  Color get warning;
   Color get outline;
 
   @override
-  FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled, Color? outline }) {
-    // Delegated to concrete classes
-    return this;
+  FliggleColors copyWith({
+    Color? primary,
+    Color? secondary,
+    Color? background,
+    Color? text,
+    Color? border,
+    Color? disabled,
+  }) {
+    throw UnimplementedError(
+      'copyWith is not implemented for $runtimeType. '
+      'Please implement this method in subclasses.',
+    );
   }
 
   @override
@@ -31,33 +43,60 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
 
 mixin FliggleConstantColors {
   @protected
-  Color get warning => const Color(0xFFF88787);
+  Color get danger => const Color(0xFFF88787);
 
   @protected
-  Color get disabled => const Color(0xFF808080);
+  Color get warning => const Color(0xFFE7B541);
 
   @protected
   Color get outline => const Color(0xFFB6B6B6);
 }
 
 class FliggleLightColors extends FliggleColors with FliggleConstantColors {
-  const FliggleLightColors();
+  const FliggleLightColors({
+    this.primary = const Color(0xFF6C98FF),
+    this.secondary = const Color(0xFF87A9F7),
+    this.background = const Color(0xFFFFFFFF),
+    this.text = const Color(0xFF000000),
+    this.border = const Color(0xFFE1E1E1),
+    this.disabled = const Color(0xFF808080),
+  });
 
   @override
-  Color get primary => const Color(0xFF6C98FF);
+  final Color primary;
 
   @override
-  Color get secondary => const Color(0xFF87A9F7);
+  final Color secondary;
 
   @override
-  Color get background => const Color(0xFFFFFFFF);
+  final Color background;
 
   @override
-  Color get text => const Color(0xFF000000);
+  final Color text;
 
   @override
-  FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled, Color? outline }) {
-    return this;
+  final Color border;
+
+  @override
+  final Color disabled;
+
+  @override
+  FliggleColors copyWith({
+    Color? primary,
+    Color? secondary,
+    Color? background,
+    Color? text,
+    Color? border,
+    Color? disabled,
+  }) {
+    return FliggleLightColors(
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      background: background ?? this.background,
+      text: text ?? this.text,
+      border: border ?? this.border,
+      disabled: disabled ?? this.disabled,
+    );
   }
 
   @override
@@ -68,23 +107,50 @@ class FliggleLightColors extends FliggleColors with FliggleConstantColors {
 }
 
 class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
-  const FliggleDarkColors();
+  const FliggleDarkColors({
+    this.primary = const Color(0xFF497BEE),
+    this.secondary = const Color(0xFF6C98FF),
+    this.background = const Color(0xFF17161A),
+    this.text = const Color(0xFFFFFFFF),
+    this.border = const Color(0xFF2E333F),
+    this.disabled = const Color(0xFF404654),
+  });
 
   @override
-  Color get primary => const Color(0xFF497BEE);
+  final Color primary;
 
   @override
-  Color get secondary => const Color(0xFF6C98FF);
+  final Color secondary;
 
   @override
-  Color get background => const Color(0xFF17161A);
+  final Color background;
 
   @override
-  Color get text => const Color(0xFFFFFFFF);
+  final Color text;
 
   @override
-  FliggleColors copyWith({ Color? primary, Color? secondary, Color? background, Color? text, Color? warning, Color? disabled, Color? outline }) {
-    return this;
+  final Color border;
+
+  @override
+  final Color disabled;
+
+  @override
+  FliggleColors copyWith({
+    Color? primary,
+    Color? secondary,
+    Color? background,
+    Color? text,
+    Color? border,
+    Color? disabled,
+  }) {
+    return FliggleDarkColors(
+      primary: primary ?? this.primary,
+      secondary: secondary ?? this.secondary,
+      background: background ?? this.background,
+      text: text ?? this.text,
+      border: border ?? this.border,
+      disabled: disabled ?? this.disabled,
+    );
   }
 
   @override
