@@ -35,7 +35,8 @@ class HomeScreen extends StatelessWidget {
             actions: [
               Padding(
                 padding: EdgeInsets.only(right: 20),
-                child: GestureDetector(
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100),
                   onTap: () {
                     // TODO: write a post
                   },

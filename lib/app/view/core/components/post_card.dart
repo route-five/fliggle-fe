@@ -4,7 +4,7 @@ import 'package:fliggle/app/view/core/design/fliggle_text_styles.dart';
 import 'package:fliggle/app/view/core/util/time_format.dart';
 import 'package:flutter/material.dart';
 
-class PostCard extends StatelessWidget {
+class PostCard extends StatefulWidget {
   const PostCard({
     super.key,
     required this.authorName,
@@ -21,12 +21,39 @@ class PostCard extends StatelessWidget {
   final String authorName;
   final String content;
   final DateTime dateTime;
-  final bool isLiked;
-  final bool isCommented;
   final int likesCount;
   final int commentsCount;
   final void Function(bool beforeIsLiked)? onLikeTap;
   final void Function()? onCommentTap;
+  final bool isLiked;
+  final bool isCommented;
+
+  @override
+  State<PostCard> createState() => _PostCardState();
+}
+
+class _PostCardState extends State<PostCard> {
+  @override
+  void initState() {
+    super.initState();
+    isLiked = widget.isLiked;
+    isCommented = widget.isCommented;
+  }
+
+  late bool isLiked;
+  late bool isCommented;
+
+  void toggleLike() {
+    setState(() {
+      isLiked = !isLiked;
+    });
+  }
+
+  void toggleComment() {
+    setState(() {
+      isCommented = !isCommented;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +73,7 @@ class PostCard extends StatelessWidget {
                 backgroundColor: FliggleColors.of(context).primary,
                 radius: 16,
                 child: Text(
-                  authorName[0].toUpperCase(),
+                  widget.authorName[0].toUpperCase(),
                   style: FliggleTextStyles.buttonText(
                     context,
                   ).copyWith(fontSize: 18),
@@ -61,7 +88,7 @@ class PostCard extends StatelessWidget {
                       children: [
                         Flexible(
                           child: Text(
-                            authorName,
+                            widget.authorName,
                             style: TextStyle(
                               color: FliggleColors.of(context).text,
                               fontWeight: FontWeight.bold,
@@ -71,7 +98,7 @@ class PostCard extends StatelessWidget {
                         ),
                         SizedBox(width: 6),
                         Text(
-                          timeFormat(dateTime),
+                          timeFormat(widget.dateTime),
                           style: TextStyle(
                             color: FliggleColors.of(context).outline,
                             fontSize: 16,
@@ -81,7 +108,7 @@ class PostCard extends StatelessWidget {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      content,
+                      widget.content,
                       style: TextStyle(
                         color: FliggleColors.of(context).text,
                         fontSize: 16,
@@ -92,11 +119,13 @@ class PostCard extends StatelessWidget {
                     SizedBox(height: 16),
                     Row(
                       children: [
-                        GestureDetector(
+                        InkWell(
+                          borderRadius: BorderRadius.circular(100),
                           onTap: () {
-                            if (onLikeTap != null) {
-                              onLikeTap!(isLiked);
+                            if (widget.onLikeTap != null) {
+                              widget.onLikeTap!(isLiked);
                             }
+                            toggleLike();
                           },
                           child:
                               isLiked
@@ -108,15 +137,21 @@ class PostCard extends StatelessWidget {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          likesCount.toString(),
+                          widget.likesCount.toString(),
                           style: TextStyle(
                             color: FliggleColors.of(context).text,
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(width: 16),
-                        GestureDetector(
-                          onTap: onCommentTap,
+                        InkWell(
+                          borderRadius: BorderRadius.circular(100),
+                          onTap: () {
+                            if (widget.onCommentTap != null) {
+                              widget.onCommentTap!();
+                            }
+                            toggleComment(); // FIXME: comment는 누르면 댓글창이 뜨는 버튼이라 toggle을 바로 하면 안됨. 나중에 수정 예정
+                          },
                           child:
                               isCommented
                                   ? FliggleIcons.commentFull(
@@ -127,7 +162,7 @@ class PostCard extends StatelessWidget {
                         ),
                         SizedBox(width: 4),
                         Text(
-                          commentsCount.toString(),
+                          widget.commentsCount.toString(),
                           style: TextStyle(
                             color: FliggleColors.of(context).text,
                             fontSize: 16,
