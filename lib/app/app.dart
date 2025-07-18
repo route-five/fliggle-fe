@@ -7,6 +7,62 @@ import 'package:fliggle/app/view/profile_screen.dart';
 import 'package:fliggle/app/view/search_screen.dart';
 import 'package:flutter/material.dart';
 
+enum NavigationTab {
+  home,
+  search,
+  chat,
+  profile;
+
+  Widget get screen {
+    switch (this) {
+      case NavigationTab.home:
+        return const HomeScreen();
+      case NavigationTab.search:
+        return const SearchScreen();
+      case NavigationTab.chat:
+        return const ChatScreen();
+      case NavigationTab.profile:
+        return const ProfileScreen();
+    }
+  }
+
+  String get label {
+    switch (this) {
+      case NavigationTab.home:
+        return 'Home';
+      case NavigationTab.search:
+        return 'Search';
+      case NavigationTab.chat:
+        return 'Chat';
+      case NavigationTab.profile:
+        return 'Profile';
+    }
+  }
+
+  Widget getIcon(BuildContext context, {required bool isSelected}) {
+    final color = FliggleColors.of(context).text;
+
+    switch (this) {
+      case NavigationTab.home:
+        return isSelected
+            ? FliggleIcons.homeSelected(color: color)
+            : FliggleIcons.home(color: color);
+      case NavigationTab.search:
+        return isSelected
+            ? FliggleIcons.searchSelected(color: color)
+            : FliggleIcons.search(color: color);
+      case NavigationTab.chat:
+        return isSelected
+            ? FliggleIcons.chatSelected(color: color)
+            : FliggleIcons.chat(color: color);
+      case NavigationTab.profile:
+        return isSelected
+            ? FliggleIcons.profileSelected(color: color)
+            : FliggleIcons.profile(color: color);
+    }
+  }
+}
+
 class App extends StatefulWidget {
   const App({super.key});
 
@@ -16,14 +72,7 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   final PageController _pageController = PageController();
-  int _currentIndex = 0;
-
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const SearchScreen(),
-    const ChatScreen(),
-    const ProfileScreen(),
-  ];
+  NavigationTab _currentTab = NavigationTab.home;
 
   @override
   void dispose() {
@@ -33,7 +82,7 @@ class _AppState extends State<App> {
 
   void _onPageChanged(int index) {
     setState(() {
-      _currentIndex = index;
+      _currentTab = NavigationTab.values[index];
     });
   }
 
@@ -58,7 +107,7 @@ class _AppState extends State<App> {
         body: PageView(
           controller: _pageController,
           onPageChanged: _onPageChanged,
-          children: _screens,
+          children: NavigationTab.values.map((tab) => tab.screen).toList(),
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
@@ -73,59 +122,16 @@ class _AppState extends State<App> {
             indicatorColor: Colors.transparent,
             backgroundColor: FliggleColors.of(context).background,
             labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            selectedIndex: _currentIndex,
+            selectedIndex: _currentTab.index,
             onDestinationSelected: _onNavTap,
-            destinations: [
-              NavigationDestination(
-                icon:
-                    _currentIndex == 0
-                        ? FliggleIcons.homeSelected(
-                          color: FliggleColors.of(context).text,
-                        )
-                        : FliggleIcons.home(
-                          color: FliggleColors.of(context).text,
-                        ),
-                tooltip: 'Home',
-                label: 'Home',
-              ),
-              NavigationDestination(
-                icon:
-                    _currentIndex == 1
-                        ? FliggleIcons.searchSelected(
-                          color: FliggleColors.of(context).text,
-                        )
-                        : FliggleIcons.search(
-                          color: FliggleColors.of(context).text,
-                        ),
-                tooltip: 'Search',
-                label: 'Search',
-              ),
-              NavigationDestination(
-                icon:
-                    _currentIndex == 2
-                        ? FliggleIcons.chatSelected(
-                          color: FliggleColors.of(context).text,
-                        )
-                        : FliggleIcons.chat(
-                          color: FliggleColors.of(context).text,
-                        ),
-                tooltip: 'Chat',
-                label: 'Chat',
-              ),
-              NavigationDestination(
-                icon:
-                    _currentIndex == 3
-                        ? FliggleIcons.profileSelected(
-                          color: FliggleColors.of(context).text,
-                        )
-                        : FliggleIcons.profile(
-                          color: FliggleColors.of(context).text,
-                        ),
-
-                tooltip: 'Profile',
-                label: 'Profile',
-              ),
-            ],
+            destinations:
+                NavigationTab.values.map((tab) {
+                  return NavigationDestination(
+                    icon: tab.getIcon(context, isSelected: tab == _currentTab),
+                    tooltip: tab.label,
+                    label: tab.label,
+                  );
+                }).toList(),
           ),
         ),
       ),
