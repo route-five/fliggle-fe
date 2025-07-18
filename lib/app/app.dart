@@ -25,6 +25,12 @@ class _AppState extends State<App> {
     const ProfileScreen(),
   ];
 
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   void _onPageChanged(int index) {
     setState(() {
       _currentIndex = index;
