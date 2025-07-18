@@ -73,7 +73,9 @@ class _PostCardState extends State<PostCard> {
                 backgroundColor: FliggleColors.of(context).primary,
                 radius: 16,
                 child: Text(
-                  widget.authorName[0].toUpperCase(),
+                  widget.authorName.isNotEmpty
+                      ? widget.authorName[0].toUpperCase()
+                      : '?',
                   style: FliggleTextStyles.buttonText(
                     context,
                   ).copyWith(fontSize: 18),
