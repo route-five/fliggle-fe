@@ -96,6 +96,7 @@ flutter:
     - assets/icons/heart.svg
     - assets/icons/heart_full.svg
     - assets/icons/comment.svg
+    - assets/icons/comment_full.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

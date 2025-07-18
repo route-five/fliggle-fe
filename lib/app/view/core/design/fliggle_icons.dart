@@ -59,4 +59,9 @@ class FliggleIcons {
 
   static SvgPicture comment({double size = 32, Color color = Colors.black}) =>
       get('assets/icons/comment.svg', size: size, color: color);
+
+  static SvgPicture commentFull({
+    double size = 32,
+    Color color = Colors.black,
+  }) => get('assets/icons/comment_full.svg', size: size, color: color);
 }

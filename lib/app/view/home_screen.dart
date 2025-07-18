@@ -79,6 +79,7 @@ class HomeScreen extends StatelessWidget {
                         DateTime(2009, 8, 7),
                       ][index % 6],
                   isLiked: Random(index).nextBool(),
+                  isCommented: Random((index + 3) % postLength).nextBool(),
                   likesCount: Random(index).nextInt(50),
                   commentsCount: Random(index).nextInt(20),
                 ),

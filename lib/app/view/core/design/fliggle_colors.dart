@@ -13,6 +13,7 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   Color get text;
   Color get border;
 
+  Color get danger;
   Color get warning;
   Color get disabled;
   Color get outline;
@@ -24,6 +25,7 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
     Color? background,
     Color? text,
     Color? border,
+    Color? danger,
     Color? warning,
     Color? disabled,
     Color? outline,
@@ -44,7 +46,10 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
 
 mixin FliggleConstantColors {
   @protected
-  Color get warning => const Color(0xFFF88787);
+  Color get danger => const Color(0xFFF88787);
+
+  @protected
+  Color get warning => const Color(0xFFE7B541);
 
   @protected
   Color get outline => const Color(0xFFB6B6B6);
@@ -85,6 +90,7 @@ class FliggleLightColors extends FliggleColors with FliggleConstantColors {
     Color? background,
     Color? text,
     Color? border,
+    Color? danger,
     Color? warning,
     Color? disabled,
     Color? outline,
@@ -141,6 +147,7 @@ class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
     Color? background,
     Color? text,
     Color? border,
+    Color? danger,
     Color? warning,
     Color? disabled,
     Color? outline,
