@@ -11,6 +11,8 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   Color get secondary;
   Color get background;
   Color get text;
+
+  Color get warning;
   Color get border;
   Color get disabled;
 
@@ -18,14 +20,19 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   Color get warning;
   Color get outline;
 
+  static const Color gray20 = Color(0xFFEAEAEA);
+  static const Color gray80 = Color(0xFF666666);
+
   @override
   FliggleColors copyWith({
     Color? primary,
     Color? secondary,
     Color? background,
     Color? text,
-    Color? border,
+    Color? warning,
     Color? disabled,
+    Color? outline,
+    Color? border,
   }) {
     throw UnimplementedError(
       'copyWith is not implemented for $runtimeType. '
@@ -36,7 +43,6 @@ abstract class FliggleColors extends ThemeExtension<FliggleColors> {
   @override
   FliggleColors lerp(ThemeExtension<FliggleColors>? other, double t) {
     if (other is! FliggleColors) return this;
-    // No interpolation: pick based on t
     return t < 0.5 ? this : other;
   }
 }
@@ -86,6 +92,9 @@ class FliggleLightColors extends FliggleColors with FliggleConstantColors {
     Color? secondary,
     Color? background,
     Color? text,
+    Color? warning,
+    Color? disabled,
+    Color? outline,
     Color? border,
     Color? disabled,
   }) {
@@ -140,6 +149,9 @@ class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
     Color? secondary,
     Color? background,
     Color? text,
+    Color? warning,
+    Color? disabled,
+    Color? outline,
     Color? border,
     Color? disabled,
   }) {
