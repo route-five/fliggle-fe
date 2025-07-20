@@ -1,138 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:fliggle/app/view/core/design/fliggle_colors.dart';
 
-/// Base class for color definitions with ThemeExtension
-abstract class FliggleColors extends ThemeExtension<FliggleColors> {
-  const FliggleColors();
+class FliggleTextStyles {
+  // Title (e.g. 게시글 작성)
+  static TextStyle titleLarge(BuildContext context) => TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+        color: FliggleColors.of(context).text,
+      );
 
-  static FliggleColors of(BuildContext context) =>
-      Theme.of(context).extension<FliggleColors>()!;
+  // 본문용 텍스트 (TextField 내부 및 hint)
+  static TextStyle bodyMedium(BuildContext context) => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: FliggleColors.of(context).text,
+      );
 
-  // Common colors
-  Color get primary;
-  Color get secondary;
-  Color get background;
-  Color get text;
-  Color get warning;
-  Color get disabled;
-  Color get outline;
+  // 버튼 텍스트 스타일 (흰색은 .copyWith(color: Colors.white)로 처리)
+  static TextStyle labelLarge(BuildContext context) => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: FliggleColors.of(context).text,
+      );
 
-  // Added colors from Figma
-  Color get border;
-  Color get inputBorder;
+  static TextStyle stepTitle(BuildContext context) => TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.w700,
+        color: FliggleColors.of(context).text,
+      );
 
-  @override
-  FliggleColors copyWith({
-    Color? primary,
-    Color? secondary,
-    Color? background,
-    Color? text,
-    Color? warning,
-    Color? disabled,
-    Color? outline,
-    Color? border,
-    Color? inputBorder,
-  });
+  // Subtitle
+  static TextStyle stepSubtitle(BuildContext context) => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: FliggleColors.of(context).disabled,
+      );
+  
+  // (Custom)TextField
+  static TextStyle textFieldLabel(BuildContext context, {bool isFocused = false}) => TextStyle(
+        fontSize: 14, // 12 너무 작아서 14로 변경했음
+        fontWeight: FontWeight.w400,
+        color: isFocused
+            ? FliggleColors.of(context).primary
+            : FliggleColors.of(context).disabled,
+      );
+  static TextStyle textFieldHint(BuildContext context) => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: FliggleColors.of(context).outline,
+      );
+  static TextStyle textFieldText(BuildContext context) => TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: FliggleColors.of(context).text,
+      );
 
-  @override
-  FliggleColors lerp(ThemeExtension<FliggleColors>? other, double t);
-}
-
-/// Shared constant colors used in both light and dark mode
-mixin FliggleConstantColors {
-  @protected
-  Color get warning => const Color(0xFFF88787);
-
-  @protected
-  Color get disabled => const Color(0xFF808080);
-
-  @protected
-  Color get outline => const Color(0xFFB6B6B6); // Used optionally
-}
-
-/// Light theme color implementation
-class FliggleLightColors extends FliggleColors with FliggleConstantColors {
-  const FliggleLightColors();
-
-  @override
-  Color get primary => const Color(0xFF6C98FF);
-
-  @override
-  Color get secondary => const Color(0xFF87A9F7);
-
-  @override
-  Color get background => const Color(0xFFFFFFFF);
-
-  @override
-  Color get text => const Color(0xFF000000);
-
-  @override
-  Color get border => const Color(0xFFE1E1E1);
-
-  @override
-  Color get inputBorder => const Color(0xFF808080);
-
-  @override
-  FliggleColors copyWith({
-    Color? primary,
-    Color? secondary,
-    Color? background,
-    Color? text,
-    Color? warning,
-    Color? disabled,
-    Color? outline,
-    Color? border,
-    Color? inputBorder,
-  }) {
-    return this; // You can implement customization if needed
-  }
-
-  @override
-  FliggleColors lerp(ThemeExtension<FliggleColors>? other, double t) {
-    if (other is! FliggleLightColors) return this;
-    return t < 0.5 ? this : other;
-  }
-}
-
-/// Dark theme color implementation
-class FliggleDarkColors extends FliggleColors with FliggleConstantColors {
-  const FliggleDarkColors();
-
-  @override
-  Color get primary => const Color(0xFF497BEE);
-
-  @override
-  Color get secondary => const Color(0xFF6C98FF);
-
-  @override
-  Color get background => const Color(0xFF17161A);
-
-  @override
-  Color get text => const Color(0xFFFFFFFF);
-
-  @override
-  Color get border => const Color(0xFF2E333F);
-
-  @override
-  Color get inputBorder => const Color(0xFF404654);
-
-  @override
-  FliggleColors copyWith({
-    Color? primary,
-    Color? secondary,
-    Color? background,
-    Color? text,
-    Color? warning,
-    Color? disabled,
-    Color? outline,
-    Color? border,
-    Color? inputBorder,
-  }) {
-    return this; // You can implement customization if needed
-  }
-
-  @override
-  FliggleColors lerp(ThemeExtension<FliggleColors>? other, double t) {
-    if (other is! FliggleDarkColors) return this;
-    return t < 0.5 ? this : other;
-  }
+  // Button
+  static TextStyle buttonText(BuildContext context) => TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        color: Colors.white,
+      );
 }

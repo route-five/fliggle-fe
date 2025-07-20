@@ -1,62 +1,151 @@
-import 'package:flutter/material.dart';
-import 'package:fliggle/app/view/auth/register/step_5.dart';
+import 'package:fliggle/app/view/chat_screen.dart';
+import 'package:fliggle/app/view/core/design/fliggle_colors.dart';
+import 'package:fliggle/app/view/core/design/fliggle_icons.dart';
 import 'package:fliggle/app/view/core/design/fliggle_theme_data.dart';
+import 'package:fliggle/app/view/home_screen.dart';
+import 'package:fliggle/app/view/profile_screen.dart';
+import 'package:fliggle/app/view/search_screen.dart';
+import 'package:flutter/material.dart';
 
-class App extends StatelessWidget {
-  const App({super.key});
+enum NavigationTab {
+  home,
+  search,
+  chat,
+  profile;
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: FliggleThemeData.lightTheme,
-      darkTheme: FliggleThemeData.darkTheme,
-      themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
-      home: RegisterStep5(),
-    );
+  Widget get screen {
+    switch (this) {
+      case NavigationTab.home:
+        return const HomeScreen();
+      case NavigationTab.search:
+        return const SearchScreen();
+      case NavigationTab.chat:
+        return const ChatScreen();
+      case NavigationTab.profile:
+        return const ProfileScreen();
+    }
+  }
+
+  String get label {
+    switch (this) {
+      case NavigationTab.home:
+        return 'Home';
+      case NavigationTab.search:
+        return 'Search';
+      case NavigationTab.chat:
+        return 'Chat';
+      case NavigationTab.profile:
+        return 'Profile';
+    }
+  }
+
+  Widget getIcon(BuildContext context, {required bool isSelected}) {
+    final color = FliggleColors.of(context).text;
+
+    switch (this) {
+      case NavigationTab.home:
+        return isSelected
+            ? FliggleIcons.homeSelected(color: color)
+            : FliggleIcons.home(color: color);
+      case NavigationTab.search:
+        return isSelected
+            ? FliggleIcons.searchSelected(color: color)
+            : FliggleIcons.search(color: color);
+      case NavigationTab.chat:
+        return isSelected
+            ? FliggleIcons.chatSelected(color: color)
+            : FliggleIcons.chat(color: color);
+      case NavigationTab.profile:
+        return isSelected
+            ? FliggleIcons.profileSelected(color: color)
+            : FliggleIcons.profile(color: color);
+    }
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<App> createState() => _AppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _AppState extends State<App> {
+  final PageController _pageController = PageController();
+  NavigationTab _currentTab = NavigationTab.home;
 
-  void _incrementCounter() {
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChanged(int index) {
     setState(() {
-      _counter++;
+      _currentTab = NavigationTab.values[index];
+    });
+  }
+
+  void _onNavTap(int index) {
+    setState(() {
+      _pageController.animateToPage(
+        index,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return MaterialApp(
+      title: 'Fliggle',
+      theme: FliggleThemeData.lightTheme,
+      darkTheme: FliggleThemeData.darkTheme,
+      themeMode: ThemeMode.system, // 시스템 다크/라이트 따라감
+      home: Scaffold(
+        body: PageView(
+          controller: _pageController,
+          onPageChanged: _onPageChanged,
+          children: NavigationTab.values.map((tab) => tab.screen).toList(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        bottomNavigationBar: Builder(
+          builder: (context) {
+            return Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(
+                    color: FliggleColors.of(context).border,
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: Builder(
+                builder: (context) {
+                  return NavigationBar(
+                    indicatorColor: Colors.transparent,
+                    backgroundColor: FliggleColors.of(context).background,
+                    labelBehavior:
+                        NavigationDestinationLabelBehavior.alwaysHide,
+                    selectedIndex: _currentTab.index,
+                    onDestinationSelected: _onNavTap,
+                    destinations:
+                        NavigationTab.values.map((tab) {
+                          return NavigationDestination(
+                            icon: tab.getIcon(
+                              context,
+                              isSelected: tab == _currentTab,
+                            ),
+                            tooltip: tab.label,
+                            label: tab.label,
+                          );
+                        }).toList(),
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

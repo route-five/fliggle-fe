@@ -1,94 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:fliggle/app/view/core/design/fliggle_colors.dart';
 import 'package:fliggle/app/view/core/design/fliggle_text_styles.dart';
+import 'package:fliggle/app/view/core/components/custom_text_field.dart';
 
-class StoryUploadScreen extends StatelessWidget {
-  const StoryUploadScreen({super.key});
+class CreatePostScreen extends StatelessWidget {
+  const CreatePostScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final colors = FliggleColors.of(context);
+
     return Scaffold(
-      backgroundColor: FliggleColors.of(context).background,
+      backgroundColor: colors.background,
+      appBar: AppBar(
+        backgroundColor: colors.background,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: colors.text),
+          onPressed: () => Navigator.pop(context),
+        ),
+        centerTitle: true,
+        title: Text(
+          '게시글 작성',
+          style: FliggleTextStyles.stepTitle(context),
+        ),
+      ),
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 28),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 32),
 
-              // 제목
-              Text(
-                '게시글 작성',
-                style: FliggleTextStyles.titleLarge(context),
+              // 텍스트 입력창
+              const CustomTextField(
+                label: '내용',
+                hint: '어떤 이야기를 나누고 싶나요?',
               ),
 
-              const SizedBox(height: 28),
-
-              // 입력창
-              Container(
-                width: double.infinity,
-                height: 258,
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: FliggleColors.of(context).background,
-                  border: Border.all(
-                    color: FliggleColors.gray20,
-                    width: 1,
-                  ),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const TextField(
-                  maxLines: null,
-                  expands: true,
-                  textAlignVertical: TextAlignVertical.top,
-                  decoration: InputDecoration(
-                    hintText: '어떤 이야기를 나누고 싶나요?',
-                    hintStyle: TextStyle(
-                      color: FliggleColors.gray80,
-                      fontSize: 16,
-                      fontFamily: 'Pretendard Variable',
-                      fontWeight: FontWeight.w500,
-                    ),
-                    border: InputBorder.none,
-                    isCollapsed: true,
-                  ),
-                  style: TextStyle(
-                    color: FliggleColors.text,
-                    fontSize: 16,
-                    fontFamily: 'Pretendard Variable',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 16),
+              const SizedBox(height: 24),
 
               // 업로드 버튼
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // TODO: 업로드 기능 연결
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: FliggleColors.primary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: OutlinedButton(
+                  onPressed: () {
+                    // 업로드 동작 구현
+                  },
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: colors.primary),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Text(
-                      '업로드',
-                      style: FliggleTextStyles.labelLargeWhite,
+                  ),
+                  child: Text(
+                    '업로드',
+                    style: FliggleTextStyles.buttonText(context).copyWith(
+                      color: colors.primary,
                     ),
                   ),
                 ),
               ),
 
-              const Spacer(),
+              const SizedBox(height: 24),
             ],
           ),
         ),
